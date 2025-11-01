@@ -1,16 +1,34 @@
-# React + Vite
+🧠 GemAI Chatbot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple AI chatbot built using Google Gemini API, Express.js, and Vite + React.
 
-Currently, two official plugins are available:
+🚀 Features
+	•	Chat with the latest Gemini 2.5 Flash model
+	•	Fast response from Google’s Generative AI API
+	•	Modern frontend using React + Vite
+	•	Fully deployable on Vercel
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+GemAI-Chatbot/
+│
+├── server.js              # Express backend
+├── package.json
+├── .env                   # Contains your API key
+│
+├── src/
+│   ├── config/
+│   │   └── gemAI.js       # Gemini API config
+│   ├── components/
+│   └── App.jsx            # Main frontend app
+│
+└── README.md
 
-## React Compiler
+💡 Tech Stack
+	•	Frontend: React + Vite
+	•	Backend: Node.js + Express
+	•	AI: Google Gemini 2.5 Flash
+	•	Hosting: Vercel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👨‍💻 Author
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+MD DANISH
+🚀 Built with ❤️ using Google Gemini API
