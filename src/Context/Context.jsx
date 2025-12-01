@@ -11,29 +11,42 @@ const ContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
 
+  // Typing effect
   const delayPara = (index, nextWord) => {
     setTimeout(function () {
       setResultData((prev) => prev + nextWord);
     }, 75 * index);
   };
 
+  // NEW CHAT FUNCTION (fixed)
   const newChat = () => {
-    setLoading(false)
-    setShowResult(false);
-  }
+    setInput("");            // clear input
+    setResultData("");       // clear result window
+    setShowResult(false);    // hide old result
+    setLoading(false);       // stop loader
+    setRecentPrompt("");     // clear last prompt
+    // NOTE: we DO NOT clear prevPrompts (your recent history)
+    // If you want to clear it also, uncomment:
+    // setPrevPrompts([]);
+  };
 
   const onSent = async (prompt) => {
     setResultData("");
     setLoading(true);
     setShowResult(true);
+
     let response;
 
+    // If clicked from history
     if (prompt !== undefined) {
       response = await runChat(prompt);
       setRecentPrompt(prompt);
-    } else {
+    }
+    // If user typed manually
+    else {
       setPrevPrompts((prev) => [...prev, input]);
-      response = await runChat(input); 
+      response = await runChat(input);
+      setRecentPrompt(input);
     }
 
     if (!response) {
@@ -43,8 +56,10 @@ const ContextProvider = (props) => {
       return;
     }
 
+    // Formatting the response
     let responseArray = response.split("**");
     let newResponse = " ";
+
     for (let i = 0; i < responseArray.length; i++) {
       if (i === 0 || i % 2 !== 1) {
         newResponse += responseArray[i];
@@ -55,9 +70,11 @@ const ContextProvider = (props) => {
 
     let newResponse2 = newResponse.split("*").join("</br>");
     let newResponseArray = newResponse2.split(" ");
+
+    // Streaming words one by one
     for (let i = 0; i < newResponseArray.length; i++) {
-      const nexWord = newResponseArray[i];
-      delayPara(i, nexWord + " ");
+      const nextWord = newResponseArray[i];
+      delayPara(i, nextWord + " ");
     }
 
     setLoading(false);
