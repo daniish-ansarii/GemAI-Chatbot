@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const genAI = new GoogleGenerativeAI("AIzaSyDrxD4kmJcjj9izrMw08z4KUgvmZU32AbA"); // your API key
+const genAI = new GoogleGenerativeAI("AQ.Ab8RN6Lo4WCER37SESpDqpneCttlEzNwvta1QA26Y3g0qoPgXw"); // your API key
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 app.post("/api/chat", async (req, res) => {
